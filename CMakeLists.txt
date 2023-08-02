@@ -176,9 +176,12 @@ ADD_SUBDIRECTORY(python)
 ADD_SUBDIRECTORY(pkgconfig)
 ADD_SUBDIRECTORY(doc)
 
-# # enable testing must be called here in order for the target test to be created
-# ENABLE_TESTING()
-# ADD_SUBDIRECTORY(test EXCLUDE_FROM_ALL)
+# enable testing must be called here in order for the target test to be created
+option(CPPADCODEGEN_BUILD_TESTS "Add targets for unit testing." ON)
+if(CPPADCODEGEN_BUILD_TESTS)
+    ENABLE_TESTING()
+    ADD_SUBDIRECTORY(test EXCLUDE_FROM_ALL)
+endif()
 
 # =============================================================================
 # uninstall procedure
